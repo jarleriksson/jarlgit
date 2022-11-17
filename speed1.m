@@ -1,3 +1,3 @@
 function v = speed1(x)
-v = min(x/3,25);
+v = max(min(v0, (x/d)*v0), 0);
 
