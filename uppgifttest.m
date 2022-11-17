@@ -1,15 +1,44 @@
+clc, clear
 
-t0 = 0; % starttid
-tend = 100; % sluttid
-N = 100000; % antal steg
-h = (tend-t0)/N; % steglängd
+%start variablerna
+M=10
+h=1
+g=5
+d=75
+tid=40
+N=tid/h
+x = zeros(M,N)
 
-f = @(t,y) speed1(x); % y'(t) = f(t,y)
+% för bilen M:s position i tidssteget N
+for bil=1:M    
+    x(bil,1) = d*(bil-1);
+end
 
-y0 = [0,0,0]; % begynnelsevärde
+% för tidssteg 1 till N, sätt startvärdena för samtliga bilar
+for steg=1:N
+    x(M, steg+1)=x(M,steg)+ h*g
+    % för varje bil från M-1 till 1, använd Euler metoden för att bestämma
+    % positionen baserat på sin position steget innan och den
+    % framförvarande bilens position i steget innan.
+    for bil = M-1:-1:1
+        x(bil, steg+1)=x(bil,steg)+h*hastighet(x(bil+1,steg)-x(bil,steg))
+    end
+end
 
+% för varje bil plotta bilen 1 till M:s position
+for bil= 1:M
+    plot(x(bil,:))
+    hold on
+end
+hold off
 
-y(1,:) = y0; % begynnelsevillkor
-for k=1:N
-  y(k+1,:) = y(k,:) + h*f(t(k), y(k,:))'; % Eulers metod
+% funktion för hastigheten
+function f = hastighet(x)
+    d=75;
+    Vm=25;
+    if x >= d;
+        f=Vm;
+    else
+        f=Vm*x/d;
+    end
 end
