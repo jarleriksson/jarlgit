@@ -2,16 +2,14 @@ clear
 
 d = 75; % Distans mellan fordon
 vmax = 25; % Högsta tillåtna hastighet
-v = 5; % Hastigheten för första bilen
+v = 25; % Hastigheten för första bilen
 
 t0 = 0; % starttid
 tend = 40; % sluttid
 N = 50; % antal steg
 h = (tend-t0)/N; % steglängd
 M = 10; % antal bilar
-t = t0:h:tend; %
-
-
+t = t0:h:tend; % steglängd
 
 x = zeros(N, M);
 
@@ -20,7 +18,7 @@ x = zeros(N, M);
 
 % (x0 för xi) = i*d
 for k=1:M
-  x(1,k) = k*d;
+  x(1,k) = k*10;
 end
 
 % Beräkna bil 1

@@ -1,0 +1,32 @@
+clear
+
+d = 75;
+vmax = 25;
+
+t0 = 0; % starttid
+tend = 100; % sluttid
+N = 10; % antal steg
+h = (tend-t0)/N; % steglängd
+n = 10; % antal bilar
+t = t0:h:tend; %
+
+x0 = zeros(1,n);
+
+x = zeros(N, n);
+x(1, :) = x0;
+
+%Beräkna bil 1
+v = 32;
+for k=1:N
+  x(k+1,1) = x(k,1) + h*v; % Eulers metod
+end
+
+%Beräkna bil N
+f = @(t,x) (5);
+for k=1:N
+  for j=2:n
+    x(k+1,j) = x(k,j) + h*speed1(, d, vmax); % Eulers metod
+  end
+end
+
+plot(t, x)
