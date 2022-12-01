@@ -1,8 +1,8 @@
 clear
 
-d = 75; % Distans mellan fordon
+d = 10; % Distans mellan fordon för att sakta ner
 vmax = 25; % Högsta tillåtna hastighet
-v = 5; % Hastigheten för första bilen
+v = 25; % Hastigheten för första bilen
 
 t0 = 0; % starttid
 tend = 50; % sluttid
@@ -31,10 +31,10 @@ end
 %Beräkna bil N
 f = @(t,x) (5);
 for k=1:N
+    
   for j=1:(M-1)
     x(k+1,M-j) = x(k,M-j) + h*speed1(x(k,M-j+1)-x(k,M-j), vmax); % Eulers metod
   end
 end
 
 plot(t, x)
-disp(x)

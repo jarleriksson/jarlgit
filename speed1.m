@@ -1,3 +1,2 @@
-function v = speed(x, d, vmax)
-v = max(min(vmax, (x/d)*vmax), 0);
-
+function v = speed1(x, vmax)
+v = min(vmax, abs(x/3));

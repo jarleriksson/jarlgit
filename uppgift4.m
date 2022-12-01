@@ -5,7 +5,7 @@ vmax = 25; % Högsta tillåtna hastighet
 v = 5; % Hastigheten för första bilen
 
 t0 = 0; % starttid
-tend = 50; % sluttid
+tend = 100; % sluttid
 N = 50; % antal steg
 h = (tend-t0)/N; % steglängd
 M = 10; % antal bilar
@@ -36,5 +36,11 @@ for k=1:N
   end
 end
 
-plot(t, x)
-disp(x)
+
+
+ for n=1:N
+       plot(x(n,:),zeros(1,M),'r*');
+       axis([0 2000 -1 1])
+       drawnow
+       pause(h/200)
+end
