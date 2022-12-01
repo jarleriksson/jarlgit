@@ -30,7 +30,7 @@ end
 f = @(t,x) (5);
 for k=1:N
   for j=1:(M-1)
-    x(k+1,M-j) = x(k,M-j) + h*speed1(x(k,M-j+1)-x(k,M-j), d, vmax); % Eulers metod
+    x(k+1,M-j) = x(k,M-j) + h*speed1(x(k,M-j+1)-x(k,M-j), vmax); % Eulers metod
   end
 end
 
