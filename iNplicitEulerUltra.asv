@@ -1,12 +1,13 @@
-function [x40] = iNplicitEulerUltra(N)
+function [x40] = iNplicitEulerUltra(StepCount)
+clear
 
+d = 75; % Distans mellan fordon för att sakta ner
 vmax = 25; % Högsta tillåtna hastighet
-d = vmax*3; % Distans mellan fordon för att sakta ner
 v = 5; % Hastigheten för första bilen
 
 t0 = 0; % starttid
-tend = 40; % sluttid
-h = (tend-t0)/N; % steglängd
+tend = 40; % sluttidt0
+h = (tend-t0)/StepCount; % steglängd
 M = 10; % antal bilar
 t = t0:h:tend; %
 
@@ -26,7 +27,9 @@ for n=1:N
 end
 
 %Beräkna bil N
+f = @(t,x) (5);
 for n=1:N
+    
   for i=1:(M-1)
     x(n+1,M-i) = (x(n,M-i) + (h/3)*min((x(n+1,M+1-i)-x(n,M-i))/(1+h/3),75)); % Eulers metod
   end

@@ -1,7 +1,7 @@
 clear
 
-d = 75; % Distans mellan fordon för att sakta ner
 vmax = 25; % Högsta tillåtna hastighet
+d = vmax*3; % Distans mellan fordon för att sakta ner
 v = 5; % Hastigheten för första bilen
 
 t0 = 0; % starttid

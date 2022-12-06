@@ -1,14 +1,15 @@
 clear
-maxiter = 100;
+maxiter = 30;
 x = zeros(1, maxiter);
 iterationv = 1:maxiter; 
+N = 10000; % antal steg
 
-explicitValue = iNplicitEulerUltra();
+explicitValue = iNplicitEulerUltra(N);
 
 for iter=1:maxiter
-    x(iter) = iFixpunktPro(iter);
+    x(iter) = iFixpunktPro(iter, N);
 end
 
-y = x - iNplicitEulerUltra();
+y = abs(x - explicitValue);
 
 semilogy(iterationv, y)
