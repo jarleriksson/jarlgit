@@ -1,2 +1,2 @@
 function v = speed1(x, vmax)
-v = min(vmax, abs(x/3));
+v = max(min(vmax, abs(x/3),0));
