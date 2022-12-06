@@ -18,11 +18,19 @@ x = zeros(N+1, M);
 x0 = zeros(1,M);
 x(1, :) = x0;
 
-%Beräkna bil N
+%Beräkna bil M
 f = @(t,x) (5);
 for k=0:N
   for j=1:(M-1)
     x(N+1-k,M-j) = (M*d) + (tend-k*h)*v;
+  end
+end
+
+%Beräkna bil N
+for k=0:N
+  for j=1:(M-1)
+      disp(M-j)
+    x(N+1-k,M-j) = x(N-k,M-j) + h*speed1(x(k,M-j+1)-x(k,M-j), vmax); % Eulers metod
   end
 end
 
