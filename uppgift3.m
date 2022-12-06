@@ -11,8 +11,6 @@ h = (tend-t0)/N; % steglängd
 M = 10; % antal bilar
 t = t0:h:tend; %
 
-
-
 x = zeros(N, M);
 
 % x0 = zeros(1,M);
@@ -36,11 +34,9 @@ for k=1:N
   end
 end
 
-
-
  for n=1:N
        plot(x(n,:),zeros(1,M),'r*');
-       axis([0 3000 -1 1])
+       axis([0 1000 -1 1])
        drawnow
        pause(h/100)
 end

@@ -1,17 +1,15 @@
 clear
 
-d = 10; % Distans mellan fordon för att sakta ner
+d = 75; % Distans mellan fordon för att sakta ner
 vmax = 25; % Högsta tillåtna hastighet
-v = 25; % Hastigheten för första bilen
+v = 5; % Hastigheten för första bilen
 
 t0 = 0; % starttid
-tend = 40; % sluttid
-N = 50; % antal steg
+tend = 40; % sluttidt0
+N = 13; % antal steg
 h = (tend-t0)/N; % steglängd
 M = 10; % antal bilar
 t = t0:h:tend; %
-
-
 
 x = zeros(N, M);
 
@@ -23,7 +21,7 @@ for k=1:M
   x(1,k) = k*d;
 end
 
-% Beräkna bil 1
+% Beräkna bil M
 for k=1:N
   x(k+1,M) = x(k,M) + h*v; % Eulers metod
 end
@@ -33,7 +31,7 @@ f = @(t,x) (5);
 for k=1:N
     
   for j=1:(M-1)
-    x(k+1,M-j) = x(k,M-j) + h*speed1(x(k,M-j+1)-x(k,M-j), vmax); % Eulers metod
+    x(k+1,M-j) = (x(k,M-j) + (h/3)*min((x(k+1,M+1-j)-x(k,M-j))/(1+h/3),75)); % Eulers metod
   end
 end
 
