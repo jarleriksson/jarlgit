@@ -16,22 +16,22 @@ x = zeros(N, M);
 % x0 = zeros(1,M);
 % x(1, :) = x0;
 
-% (x0 för xi) = i*d
-for i=1:M
-  x(1,i) = i*d;
+% (x0 för xi) = n*d
+for n=1:M
+  x(1,n) = n*d;
 end
 
 % Beräkna bil M
-for i=1:N
-  x(i+1,M) = x(i,M) + h*v; % Eulers metod
+for n=1:N
+  x(n+1,M) = x(n,M) + h*v; % Eulers metod
 end
 
 %Beräkna bil N
 f = @(t,x) (5);
-for i=1:N
+for n=1:N
     
-  for n=1:(M-1)
-    x(i+1,M-n) = (x(i,M-n) + (h/3)*min((x(i+1,M+1-n)-x(i,M-n))/(1+h/3),75)); % Eulers metod
+  for i=1:(M-1)
+    x(n+1,M-i) = (x(n,M-i) + (h/3)*min((x(n+1,M+1-i)-x(n,M-i))/(1+h/3),75)); % Eulers metod
   end
 end
 
