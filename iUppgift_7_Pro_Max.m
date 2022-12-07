@@ -10,7 +10,7 @@ N = 100; % antal steg
 h = (tend-t0)/N; % steglängd
 M = 10; % antal bilar
 t = t0:h:tend; %
-tol = 1e-1000;         % Tolerans
+tol = 1e-10;         % Tolerans
 maxiter = 1000;
 
 x = zeros(N, M);

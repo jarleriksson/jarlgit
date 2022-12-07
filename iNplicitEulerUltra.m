@@ -8,7 +8,6 @@ t0 = 0; % starttid
 tend = 40; % sluttid
 h = (tend-t0)/N; % steglängd
 M = 10; % antal bilar
-t = t0:h:tend; %
 
 x = zeros(N, M);
 

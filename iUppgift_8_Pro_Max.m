@@ -2,7 +2,7 @@ clear
 maxiter = 30;
 x = zeros(1, maxiter);
 iterationv = 1:maxiter; 
-N = 10000; % antal steg
+N = 1000; % antal steg
 
 explicitValue = iNplicitEulerUltra(N);
 
