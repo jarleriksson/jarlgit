@@ -1,4 +1,6 @@
+clear
 x = 0:200;
-d = 75
-vmax = 25
+vmax = 25;
+d = 3*vmax; % Tresekundersregeln
+
 plot(x, speed1(x, vmax))
