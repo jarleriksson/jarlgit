@@ -6,7 +6,7 @@ v = 5; % Hastigheten för första bilen
 
 t0 = 0; % starttid
 tend = 40; % sluttidt0
-N = 13; % antal steg
+N = 50; % antal steg
 h = (tend-t0)/N; % steglängd
 M = 10; % antal bilar
 t = t0:h:tend; %

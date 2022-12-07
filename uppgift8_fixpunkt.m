@@ -1,4 +1,4 @@
-function [x40] = iFixpunktPro(maxiter, N)
+function [x40] = uppgift8_fixpunkt(maxiter, N)
 vmax = 25; % Högsta tillåtna hastighet
 d = vmax*3; % Distans mellan fordon för att sakta ner
 v = 5; % Hastigheten för första bilen

@@ -4,12 +4,12 @@ x = zeros(1, maxiter);
 iterationv = 1:maxiter; 
 N = 1000; % antal steg
 
-explicitValue = iNplicitEulerUltra(N);
+implicitValue = uppgift8_implicit(N);
 
 for iter=1:maxiter
-    x(iter) = iFixpunktPro(iter, N);
+    x(iter) = uppgift8_fixpunkt(iter, N);
 end
 
-y = abs(x - explicitValue);
+y = abs(x - implicitValue);
 
 semilogy(iterationv, y)

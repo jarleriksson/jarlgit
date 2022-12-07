@@ -1,4 +1,4 @@
-function [x40] = iNplicitEulerUltra(N)
+function [x40] = uppgift8_implicit(N)
 
 vmax = 25; % Högsta tillåtna hastighet
 d = vmax*3; % Distans mellan fordon för att sakta ner
