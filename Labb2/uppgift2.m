@@ -12,9 +12,10 @@ e=norm(A*x-yd)/sqrt(n);
 
 xmq = 0:1/100:3;
 ymq = b*xmq + a ;
-hold 
+hold on;
 plot(xmq,ymq);
 plot(td , yd);
+
 
 %%
 % Polynominterpolation med Newtons ansats
@@ -36,4 +37,5 @@ p = @(t) a(1) + a(2)*(t-x(1)) + a(3)*(t-x(1)).*(t-x(2)) + a(4)*(t-x(1)).*(t-x(2)
 clf
 plot(x, y, 'o')
 hold on
+
 fplot(p, [1, 4])
