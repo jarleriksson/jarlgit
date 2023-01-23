@@ -4,14 +4,15 @@ yd=[0; 0.52; 1.09; 1.75; 2.45; 3.5; 4];
 A=[ones(size(td)) td];
 B = transpose(A) *A;
 C =  transpose(A) * yd;
+r = transpose(td);
+q = transpose(yd);
 
 x=B\C; a=x(1); b=x(2); 
 
 n=length(td);
 e=norm(A*x-yd)/sqrt(n);
 
-xmq = 0:1/100:3;
-ymq = sin(xmq);
-plot(x,y)
+q = [q;f];
+
 
 plot((r),(q))
