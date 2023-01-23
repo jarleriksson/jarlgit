@@ -15,6 +15,7 @@ e=norm(A*x-yd)/sqrt(n);
 
 xmq = 0:1/100:3;
 ymq = b*xmq + a ;
-hold 
+hold on;
 plot(xmq,ymq);
 plot(td , yd);
+hold off;
