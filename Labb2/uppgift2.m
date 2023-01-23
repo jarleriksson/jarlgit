@@ -11,7 +11,7 @@ n=length(td);
 e=norm(A*x-yd)/sqrt(n);
 
 xmq = 0:1/100:3;
-ymq = sin(xmq);
-plot(x,y)
-
-plot((r),(q))
+ymq = b*xmq + a ;
+hold 
+plot(xmq,ymq);
+plot(td , yd);
