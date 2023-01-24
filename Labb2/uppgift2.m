@@ -1,22 +1,46 @@
-td=[0; 0.5; 1; 1.5; 2; 2.99; 3];
-yd=[0; 0.52; 1.09; 1.75; 2.45; 3.5; 4];
+clear
+x=[0; 0.5; 1; 1.5; 2; 2.99; 3];
+y=[0; 0.52; 1.09; 1.75; 2.45; 3.5; 4];
 
-A=[ones(size(td)) td];
-B = transpose(A) *A;
-C =  transpose(A) * yd;
+A=[ x x.^2];
+B = A' *A;
+C =  A' * y;
 
-x=B\C; a=x(1); b=x(2); 
+d=B\C; 
 
-n=length(td);
-e=norm(A*x-yd)/sqrt(n);
+coeff1=d(1); 
+coeff2=d(2);
+
+n=length(x);
+e=norm(A*d-y)/sqrt(n);
 
 xmq = 0:1/100:3;
-ymq = b*xmq + a ;
+ymq = coeff2*(xmq.^2) + coeff1*xmq  ;
 hold on;
 plot(xmq,ymq);
-plot(td , yd);
+plot(x , y, 'o');
 
+%%
+% Data
+X = [0 0.5 1 1.5 2 2.99 3];
+Y = [0 0.52 1.09 1.75 2.45 3.5 4];
 
+% Designmatris
+A = [X.^0 X.^1 X.^2];
+
+% Lösning av minsta kvadraters problem
+theta = (A'*A)\(A'*Y);
+
+% Bestämda koefficienter
+a = theta(1);
+b = theta(2);
+c = theta(3);
+
+% Produktionsfunktion
+f = @(x) a + b*x + c*x.^2;
+
+% Skriv ut resultatet
+fprintf('Produktionsfunktion: f(X) = %.2f + %.2fX + %.2fX^2\n', a, b, c)
 %%
 % Polynominterpolation med Newtons ansats
 clear
@@ -38,4 +62,4 @@ clf
 plot(x, y, 'o')
 hold on
 
-fplot(p, [1, 4])
+fplot(p, [0, 4])

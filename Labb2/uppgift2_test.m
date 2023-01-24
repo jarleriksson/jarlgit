@@ -11,7 +11,6 @@ scatter(siffror(:,1), siffror(:,2))
 n = 2;
 
 [p, F] = mk(siffror(:,1), siffror(:,2), n);
-
 ta_bort = 1;
 fel_matris = zeros(length(siffror),1);
 while ta_bort <= length(siffror)
