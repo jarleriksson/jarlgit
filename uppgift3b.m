@@ -1,7 +1,20 @@
-clear 
+
+clear
+%mk metod
+x=[0; 0.5; 1; 1.5; 2; 2.99; 3];
+y=[0; 0.52; 1.09; 1.75; 2.45; 3.5; 4];
+
+A=[ x x.^2];
+B = A' *A;
+C =  A' * y;
+
+d=B\C; 
+
+coeff1=d(1); 
+coeff2=d(2);
+
+
 % Define the non-linear function U(alpha)
- 
-% Define the data
 alpha = [150, 200, 300, 500, 1000, 2000]';
 U = [2, 3, 4, 5, 6, 7]';
 % Define the initial guess for a and b
@@ -24,14 +37,11 @@ while norm(s) > tol && iter <= max_iter
     iter = iter + 1;
 end
 
-h = @(x) 8 - c(1).*x.^c(2);
-
-xx = linspace(0, 3000);
-plot(alpha, U, 'o', xx, h(xx))
 
 
-%% 
-%b delen
+xx = linspace(0, 5);
+konsumption = @(x) (coeff1*x + coeff2*x.^2)/(1-1/c(2));
 
+plot(xx, konsumption(xx), '-')
 
 
