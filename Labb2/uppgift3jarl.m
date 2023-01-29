@@ -30,8 +30,6 @@ xx = linspace(0, 3000);
 plot(alpha, U, 'o', xx, h(xx))
 
 
-%% 
-%b delen
 
 
 
