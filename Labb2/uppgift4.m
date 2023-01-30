@@ -3,9 +3,6 @@ N = 100; %antal tidssteg
 delta_t = T/N;
 x_0 = 1; %startvärde
 
-
-
-
 f_1 = @(X)(X); %produktions-funktionerna med derivator
 D_f_1 = @(X)(1);
 f_2 = @(X)(X+(X.^2)./10);
