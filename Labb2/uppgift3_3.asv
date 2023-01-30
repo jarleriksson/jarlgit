@@ -12,12 +12,12 @@ C =  A' * y;
 
 d = B \ C; 
 
-a = exp(d(1)); 
-b = d(2); 
+coeff1 = log(d(1); 
+coeff2 = d(2); 
 
 
-xmq = min(x_f):1:max(x_f);
+xmq = 0:1:max(x);
 
-U = 8-a*(xmq.^b);
+U = 8 - exp(coeff1 + coeff2*xmq);
 
 plot(x_f, U_f, 'o',xmq,U,'-');
