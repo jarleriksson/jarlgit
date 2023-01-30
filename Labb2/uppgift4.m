@@ -1,9 +1,9 @@
 clear
 
-T = 1; % tidsintervall
-N = 100; % antal tidssteg
+T = 1; % Tidsintervall
+N = 100; % Antal tidssteg
 delta_t = T/N;
-x_0 = 1; % startvärde
+x_0 = 1; % Startvärde
 
 % Produktions-funktionerna med derivator
 func_1 = @(X)(X); 
