@@ -11,13 +11,11 @@ q(2,1) =0;
 p(1,1) = 0;
 p(2,1) = ((1+a)/(1-a))^0.5;
 
-%Beräkna bil N
-f = @(t,x) (5);
-for n=1:N
-    
-  for i=1:(M-1)
-    x(n+1,M-i) = (x(n,M-i) + (h/3)*min((x(n+1,M+1-i)-x(n,M-i))/(1+h/3),75)); % Eulers metod
-  end
-end
+for n =1:N
+    %hastighet
+    p(:,n+1) = p(:,n) + h * fix_punkt(q(:,n),p(:,n), h);
+    %position
+    q(:,n+1) = q(:,n) + h * p(:,n);
+end 
 
-plot(t, x)
+scatter(q(1,:),q(2,:))
