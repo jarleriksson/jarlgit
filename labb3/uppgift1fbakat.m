@@ -1,5 +1,5 @@
 clear
-N = 50000;
+N = 500000;
 h = 0.0005;
 q = zeros(2,N);
 p = zeros(2,N);
@@ -18,4 +18,5 @@ for n =1:N
     q(:,n+1) = q(:,n) + h * p(:,n);
 end 
 
-scatter(q(1,:),q(2,:))
+plot(q(1,:),q(2,:))
+grid on
