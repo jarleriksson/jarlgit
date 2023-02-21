@@ -7,6 +7,7 @@ tol = 1e-10;
 % Initialize u matrix with zeros
 u = zeros(4,n);
 
+
 % Set initial values for variables
 a=0.5;
 u(:,1)=[1-a; 0; 0; sqrt((1+a)/(1-a))];

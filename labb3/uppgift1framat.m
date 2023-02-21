@@ -1,6 +1,6 @@
 clear
-N = 5000;
-h = 0.01;
+N = 500000;
+h = 0.001;
 q = zeros(2,N);
 p = zeros(2,N);
 
@@ -22,3 +22,5 @@ plot(q(1,:),q(2,:))
 title('framåt Euler')
 xlabel('q1(t)')
 ylabel('q2(t)')
+
+energiframat(q, p, n, h);
