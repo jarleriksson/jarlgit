@@ -18,4 +18,7 @@ for n =1:N
     q(:,n+1) = q(:,n) + h * p(:,n);
 end 
 
-scatter(q(1,:),q(2,:))
+plot(q(1,:),q(2,:))
+title('framåt Euler')
+xlabel('q1(t)')
+ylabel('q2(t)')
