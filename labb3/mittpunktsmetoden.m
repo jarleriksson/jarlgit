@@ -1,13 +1,18 @@
 close all
-% steglängd 
+% Set step size, number of iterations and tolerance
 h = 0.001; 
 n = 90000; 
 tol = 1e-10;
-u = zeros(4,n);
-% Begynnelsevärden
 
+
+% Initialize u matrix with zeros
+u = zeros(4,n);
+
+% Set initial values for variables
 a=0.5;
 u(:,1)=[1-a; 0; 0; sqrt((1+a)/(1-a))];
+
+% Define anonymous function for f(q,p)
 f = @(q1,q2,p1,p2,q3,q4,p3,p4) [1/2*(h*p1+h*p3);
 
 1/2*(h*p2+h*p4);
