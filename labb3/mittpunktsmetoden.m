@@ -25,7 +25,7 @@ end
 q1=u(1,:);
 q2=u(2,:);
 plot(q1,q2)
-title('Symplektisk Euler')
+title('mittpunktsmetoden')
 xlabel('q1(t)')
 ylabel('q2(t)')
 

@@ -1,5 +1,5 @@
 clear
-N = 500000;
+N = 50000;
 h = 0.005;
 q = zeros(2,N);
 p = zeros(2,N);

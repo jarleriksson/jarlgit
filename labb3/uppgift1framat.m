@@ -23,4 +23,17 @@ title('framåt Euler')
 xlabel('q1(t)')
 ylabel('q2(t)')
 
-energiframat(q, p, n, h);
+
+
+f=@(p,q)  1/2*(p(1).^2+p(2).^2)-1./sqrt(q(1).^2+q(2).^2);
+
+energi = zeros(1,N);
+for n = 1:N
+    energi(1,n) = (f(p(:,n),q(:,n)));
+end
+
+t= h:h:n*h;
+plot(t, energi)
+title('Energi')
+xlabel('Tid')
+ylabel('Energi')
