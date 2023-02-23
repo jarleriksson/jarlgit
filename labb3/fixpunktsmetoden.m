@@ -5,7 +5,7 @@ function acc = fixpunktsmetoden(q, p, h)
     x = [q(1),q(2),p(1), p(2)];             % Startgissning
     tol = 1e-10;                             % Tolerans
     
-    diffx = 1; iter = 0; maxiter = 20;
+    diffx = 1; iter = 0; maxiter = 100;
     format compact, format longg
     
     while diffx > tol && iter < maxiter

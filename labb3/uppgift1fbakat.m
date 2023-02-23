@@ -11,11 +11,14 @@ q(2,1) =0;
 p(1,1) = 0;
 p(2,1) = ((1+a)/(1-a))^0.5;
 
-for n =1:N
+for n =1:N-1
     %hastighet
-    p(:,n+1) = p(:,n) + h * fixpunktsmetoden(q(:,n),p(:,n), h);
+    data = fixpunktsmetoden(q(:,n),p(:,n), h);
+    p(:,n+1) =  p(:,n) + h* [data(1),data(2)]';
+
+    q(:,n+1) = q(:,n) + h*p(:,n+1);
+
     %position
-    q(:,n+1) = q(:,n) + h * p(:,n);
 end 
 
 plot(q(1,:),q(2,:))

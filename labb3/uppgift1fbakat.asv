@@ -1,6 +1,6 @@
 clear
-N = 50000;
-h = 0.005;
+N = 100000;
+h = 0.0005;
 q = zeros(2,N);
 p = zeros(2,N);
 
@@ -11,11 +11,15 @@ q(2,1) =0;
 p(1,1) = 0;
 p(2,1) = ((1+a)/(1-a))^0.5;
 
-for n =1:N
+for n =1:N-1
     %hastighet
-    p(:,n+1) = p(:,n) + h * fix_punkt(q(:,n),p(:,n), h);
+    data = fixpunktsmetoden(q(:,n),p(:,n), h);
+
+    p(:,n+1) =  p(:,n+1) + [data(1),data(2)]';
+
+    q(:,n+1) = q(:,n+1) + h*[data(3),data(4)]';
+
     %position
-    q(:,n+1) = q(:,n) + h * p(:,n);
 end 
 
 plot(q(1,:),q(2,:))
