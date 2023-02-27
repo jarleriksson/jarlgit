@@ -1,32 +1,21 @@
-g1 = @(p,q,acc,h) [q(1)+ h*p(1),q(2)+ h*p(2), p(1)+ acc, p(2)+ acc];    % Anonym funktion för g(x), alternativ 1
-
-% Obs: Funktionerna g1 och g2 har samma fixpunkt, nämligen
-% x≈-0.6735931, som denna figur visar:
-plotinterval = [-2, 2];
-clf, fplot(g1, plotinterval), hold on
-fplot(g2, plotinterval)
-fplot(@(x)x, plotinterval)
-xlabel('x'), legend('g_1(x)', 'g_2(x)', 'x', 'Location', 'best')
-
-% Testa fixpunktsmetoden för g1 och g2. För g1 så konvergerar
-% metoden, men inte för g2.
-%g = g1;
-g = g2;
-
-x = [q(1),q(2),p(1), p(2)];             % Startgissning
-tol = 1e-10;         % Tolerans
-
-diffx = 1; iter = 0; maxiter = 100;
-format compact, format longg
-
-while diffx > tol && iter < maxiter
-    iter = iter + 1;     % Antal iterationer - n
-    acc = acceleration([q(1), q(2)]); 
-    xnew = g(p, q, acc, h);     % Uppdatering med fixpunkt
-    diffx = abs(xnew-x);        % |x(n+1)-x(n)|
-    x = xnew;
-    disp([iter xnew diffx])
-end
-if iter == maxiter
-    disp('Varning! Maximalt antal iterationer nått')
-end
+function acc = fixpunktsmetoden(q, p, h)
+    g = @(q,p,acc,h) [q(1)+ h*p(1),q(2)+ h*p(2), p(1)+ h*acc(1), p(2)+ h*acc(2)];    % Anonym funktion för g(x), alternativ 1
+ 
+    
+    x = [q(1),q(2),p(1), p(2)];             % Startgissning
+    tol = 1e-15;                             % Tolerans
+    
+    diffx = 1; iter = 0; maxiter = 100;
+    format compact, format longg
+    
+    while diffx > tol && iter < maxiter
+        iter = iter + 1;     % Antal iterationer - n
+        acc = acceleration([x(1), x(2)]); 
+        xnew = g(q, p, acc, h);     % Uppdatering med fixpunkt
+        diffx = norm(xnew-x);        % |x(n+1)-x(n)|
+        x = xnew;
+        %disp([iter xnew diffx]);
+    end
+    if iter == maxiter
+        disp('Varning! Maximalt antal iterationer nått')
+    end
