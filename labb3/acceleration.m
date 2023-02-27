@@ -1,4 +1,4 @@
-function a = acceleration(q)
-a = - [q(1)/(q(1)^2+q(2)^2)^(3/2); q(2)/(q(1)^2+q(2)^2)^(3/2)];
+function a = acceleration(pos)
+a = - [pos(1)/(pos(1)^2+pos(2)^2)^(3/2); pos(2)/(pos(1)^2+pos(2)^2)^(3/2)];
 
 end

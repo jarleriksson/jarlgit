@@ -1,38 +1,38 @@
 clear
-N = 500000;
+N = 350000;
 h = 0.0005;
-q = zeros(2,N);
-p = zeros(2,N);
+pos = zeros(2,N);
+has = zeros(2,N);
 
 %startvärden
 a = 0.5;
-q(1,1) = 1-a;
-q(2,1) =0;
-p(1,1) = 0; 
-p(2,1) = ((1+a)/(1-a))^0.5;
+pos(1,1) = 1-a;
+pos(2,1) =0;
+has(1,1) = 0; 
+has(2,1) = ((1+a)/(1-a))^0.5;
 
 for n =1:N-1
     %hastighet
-    data = fixpunktsmetoden(q(:,n),p(:,n), h);
-    p(:,n+1) =  p(:,n) + h* [data(1),data(2)]';
+    data = fixpunktsmetoden(pos(:,n),has(:,n), h);
+    has(:,n+1) =  has(:,n) + h* [data(1),data(2)]';
 
-    q(:,n+1) = q(:,n) + h*p(:,n+1);
+    pos(:,n+1) = pos(:,n) + h*has(:,n+1);
 
     %position
 end 
 
-plot(q(1,:),q(2,:))
+plot(pos(1,:),pos(2,:))
 title('bakåt Euler')
-xlabel('q1(t)')
-ylabel('q2(t)')
+xlabel('pos1(t)')
+ylabel('pos2(t)')
 grid on
 
 
-f=@(p,q)  1/2*(p(1).^2+p(2).^2)-1./sqrt(q(1).^2+q(2).^2);
+f=@(has,pos)  1/2*(has(1).^2+has(2).^2)-1./sqrt(pos(1).^2+pos(2).^2);
 
 energi = zeros(1,N);
 for n = 1:N
-    energi(1,n) = (f(p(:,n),q(:,n)));
+    energi(1,n) = (f(has(:,n),pos(:,n)));
 end
 
 t= h:h:n*h;
