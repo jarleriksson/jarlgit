@@ -4,6 +4,7 @@ N = 100000;
 tol = 1e-10;
 % Begynnelsevärden
 a=0.5;
+
 u=zeros(4,N);
 u(:,1)=[1-a; 0; 0; sqrt((1+a)/(1-a))];
 f=@(has1,has2,pos1,pos2)  [has1; has2; -pos1/(pos1^2+pos2^2)^(3/2); -pos2/(pos1^2+pos2^2)^(3/2)];
