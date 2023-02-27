@@ -1,38 +1,40 @@
 clear
 N = 500000;
 h = 0.001;
-q = zeros(2,N);
-p = zeros(2,N);
+pos = zeros(2,N);
+has = zeros(2,N);
 
 %startvärden
 a = 0.5;
-q(1,1) = 1-a;
-q(2,1) =0;
-p(1,1) = 0;
-p(2,1) = ((1+a)/(1-a))^0.5;
+pos(1,1) = 1-a;
+pos(2,1) =0;
+has(1,1) = 0;
+has(2,1) = ((1+a)/(1-a))^0.5;
 
 for n =1:N
     %hastighet
-    p(:,n+1) = p(:,n) + h * (acceleration(q(:,n)));
+    has(:,n+1) = has(:,n) + h * (acceleration(pos(:,n)));
     %position
-    q(:,n+1) = q(:,n) + h * p(:,n);
+    pos(:,n+1) = pos(:,n) + h * has(:,n);
 end 
 
-plot(q(1,:),q(2,:))
+plot(pos(1,:),pos(2,:))
 title('framåt Euler')
-xlabel('q1(t)')
-ylabel('q2(t)')
+xlabel('pos1(t)')
+ylabel('pos2(t)')
 
 
 
-f=@(p,q)  1/2*(p(1).^2+p(2).^2)-1./sqrt(q(1).^2+q(2).^2);
+f=@(has,pos)  1/2*(has(1).^2+has(2).^2)-1./sqrt(pos(1).^2+pos(2).^2);
 
 energi = zeros(1,N);
 for n = 1:N
-    energi(1,n) = (f(p(:,n),q(:,n)));
+    energi(1,n) = (f(has(:,n),pos(:,n)));
 end
 
 t= h:h:n*h;
+
+figure
 plot(t, energi)
 title('Energi')
 xlabel('Tid')
