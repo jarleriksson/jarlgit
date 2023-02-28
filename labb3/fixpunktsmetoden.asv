@@ -2,11 +2,11 @@
 
 
 
-function acc = fixpunktsmetoden(pos, has, h)
-    g = @(pos,has,acc,h) [pos(1)+ h*has(1),pos(2)+ h*has(2), has(1)+ h*acc(1), has(2)+ h*acc(2)];    % Anonym funktion för g(x), alternativ 1
+function acc = fixpunktsmetoden(q, has, h)
+    g = @(q,has,acc,h) [q(1)+ h*has(1),q(2)+ h*has(2), has(1)+ h*acc(1), has(2)+ h*acc(2)];    % Anonym funktion för g(x), alternativ 1
  
     
-    x = [pos(1),pos(2),has(1), has(2)];             % Startgissning
+    x = [q(1),q(2),has(1), has(2)];             % Startgissning
     tol = 1e-10;                             % Tolerans
     
     diffx = 1; iter = 0; maxiter = 100;

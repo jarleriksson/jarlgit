@@ -1,3 +1,4 @@
+clear
 close all
 % Set step size, number of iterations and tolerance
 h = 0.001; 
@@ -22,6 +23,7 @@ for i=2:N
    u(:,i)=rel_data;
 end
 
+% Plotta 
 pos1=u(1,:);
 pos2=u(2,:);
 plot(pos1,pos2)

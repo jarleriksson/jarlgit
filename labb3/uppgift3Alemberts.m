@@ -1,11 +1,9 @@
 % Vågekvationen med homogena dirichletvillkor och c=1
 clear
 close all
- 
 N = 300; % antal intervall
-x_interval = 1.0; % 0 < x < 1
 t_end = 10; % 0 < t < 10
-h = x_interval/N; % steglängd
+h = 1/N; % steglängd
 dt = h/2; % tidssteg
 M = fix(t_end/dt); % antal tidssteg
 axis([0 1 -2.2 2])
@@ -22,15 +20,11 @@ open(write_obj);
 nframe=M;
 mov(1:nframe) = struct('cdata', [], 'colormap', []);
 set(gca, 'nextplot', 'replacechildren')
- 
-
-
 
 X = linspace(0, 1, N-1);
-u(:,1) = sin(10*X); % initialvärde för u(x,0) = g(x)
+u(:,1) = sin(10*X); % begynnelsevärde för vågen
 
-
-for m=1:M % tidstegning med symplektiska Euler
+for m=1:M % symplektiska Euler med användlig av A matrisen som operator
     for n = 1:N-1
         u(n,m) =  sin(10*(X(n)+(m-1)*dt)) + sin(10*(X(n)-(m-1)*dt));   
     end
